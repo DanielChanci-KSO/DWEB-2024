@@ -8,25 +8,27 @@
 const p1 = {
     score: 0,
     button: document.querySelector('#p1Button'),
-    display: document.querySelector('#p1Display')
+    display: document.querySelector('#p1Display'),
 }
 
 const p2 = {
     score: 0,
     button: document.querySelector('#p2Button'),
-    display: document.querySelector('#p2Display')
+    display: document.querySelector('#p2Display'),
 }
 
-let isGameOver = false;
-let winningScore = 3;
 
 const resetButton = document.querySelector('#reset');
 const winningScoreSelect = document.querySelector('#playto');
 
-function updateScore(player, opponent) {
+let winningScore = 3;
+let isGameOver = false;
+
+function updateScores(player, opponent){
     if (!isGameOver) {
-        player.score += 1;
-        if(player.score === winningScore) {
+        player.score++;
+        console.log(winningScore);
+        if (player.score === winningScore) {
             isGameOver = true;
             player.display.classList.add('has-text-success');
             opponent.display.classList.add('has-text-danger');
@@ -37,26 +39,24 @@ function updateScore(player, opponent) {
     }
 }
 
-function resetScore() {
+p1.button.addEventListener('click', () => updateScores(p1, p2));
+
+p2.button.addEventListener('click', () => updateScores(p2, p1));
+
+winningScoreSelect.addEventListener('change', function () {
+    console.log(this);
+    winningScore = parseInt(this.value);
+    reset();
+})
+
+resetButton.addEventListener('click', () => reset());
+
+function reset() {
     isGameOver = false;
     for (let player of [p1, p2]) {
         player.score = 0;
         player.display.textContent = 0;
-        player.display.classList.remove('has-text-danger', 'has-text-success');
         player.button.disabled = false;
+        player.display.classList.remove('has-text-success', 'has-text-danger');
     }
 }
-
-winningScoreSelect.addEventListener('change', function () {
-    winningScore = parseInt(this.value);
-    console.log(winningScore);
-    resetScore();
-})
-
-p1.button.addEventListener('click', () => updateScore(p1, p2));
-p2.button.addEventListener('click', () => updateScore(p2, p1));
-
-resetButton.addEventListener('click', resetScore);
-
-
-

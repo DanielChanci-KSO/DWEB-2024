@@ -1,28 +1,29 @@
-function Pet(name) {
-    this.name = name;
+// function Pet(name) {
+//     this.name = name;
   
-    this.getName = () => this.name;
-  }
+//     this.getName = () => this.name;
+//   }
   
-  const cat = new Pet('Fluffy');
+//   const cat = new Pet('Fluffy');
 
 
-//Parámetros por defecto
+
+// //Parámetros por defecto
 
 
-// Antes
+// // Antes
 
-function rollDice(nombreUsuario = 'Invitado', numSides = 6) {
-    console.log(`${nombreUsuario}`);
-    return Math.floor(Math.random() * numSides) + 1;
-}
+// function rollDice(nombreUsuario = 'Invitado', numSides = 6) {
+//     console.log(`${nombreUsuario}`);
+//     return Math.floor(Math.random() * numSides) + 1;
+// }
 
 // Spread operator (...)
 
 // Expande un iterable en una lista de argumentos;
 
 const nums = [12, 13, 14, 15, 16, 17, 18, 19, 20];
-const otros = [...nums];
+const otros = [...nums]
 
 otros[0] = 35;
 
@@ -57,9 +58,9 @@ function sum(...nums) {
 
 console.log(sum(19,23,44,56,70,7,78,-45,312));
 
-//Destructuración
+// //Destructuración
 
-//forma corta de sacar elementos en un arreglo u objeto
+// //forma corta de sacar elementos en un arreglo u objeto
 
 const scores = [929321, 899341, 888336, 772739, 543671, 243567, 111934, 800000];
 
@@ -71,7 +72,7 @@ const [gold, silver, bronze, ...left] = scores;
 
 console.log(gold, silver, bronze, left);
 
-// objetos
+// // objetos
 
 const user = {
     email: 'harvey@gmail.com',
@@ -107,6 +108,6 @@ function fullName({firstName, lastName}) {
 }
 
 
-fullName(user)
+// fullName(user)
 
 
