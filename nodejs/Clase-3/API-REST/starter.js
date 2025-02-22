@@ -3,7 +3,7 @@ const cors = require('cors');
 const crypto = require('node:crypto');
 
 const movies = require('./movies.json');
-const { validateMovie,validatePartialMovie } = require('./schemas/movies');
+const { validateMovie,validatePartialMovie } = require('./schemas/movies').default;
 
 const app = express();
 app.use(express.json());
